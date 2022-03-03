@@ -12,6 +12,9 @@ driver = webdriver.Chrome('/Users/yassine/Documents/boot/chromedriver')
 driver.get("https://candidature.1337.ma/piscines")
 print(driver.title)
 
+search = driver.find_element_by_name("user[email]")
+print(search)
+
 driver.quit()
 
 URL = 'https://candidature.1337.ma/piscines'
