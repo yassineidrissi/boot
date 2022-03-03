@@ -1,25 +1,47 @@
-# import required files and modules
-
-import requests
-from bs4 import BeautifulSoup
-import smtplib
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
 import time
 
+# chrome_options = Options()
+# chrome_options.add_argument('--headless')
+# chrome_options.add_argument('--no-sandbox')
+# chrome_options.add_argument('--disable-dev-shm-usage')
 # set the headers and user string
-headers = {
-"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.109 Safari/537.36"
-}
 
+driver = webdriver.Chrome('/Users/yassine/Documents/boot/chromedriver')
+driver.get("https://candidature.1337.ma/piscines")
+print(driver.title)
+
+driver.quit()
+
+URL = 'https://candidature.1337.ma/piscines'
+#!stop here
 # send a request to fetch HTML of the page
-response = requests.get('https://www.amazon.com/Sony-WH-1000XM4-Canceling-Headphones-phone-call/dp/B0863TXGM3/ref=sr_1_3?crid=2S5UN6WKI119A&keywords=sony&qid=1646014132&sprefix=sony%2Caps%2C308&sr=8-3', headers=headers)
-
 # create the soup object
-soup = BeautifulSoup(response.content, 'html.parser')
-title = soup.find(id= "productTitle")
-price = soup.find(td class="a-color-secondary a-size-base a-text-right a-nowrap")
 # change the encoding to utf-8
 # soup.encode('utf-8')
 
+user = "yassine1337idrissi@gmail.com"
+password = "Yassin@0661535096"
+username_login = driver.find_element_by_id("string email optional")
+password_login = driver.find_element_by_class_name("password optional")
+# username_login.send_keys(user)
+# time.sleep(1)
+# password_login.send_keys(password)
+user = soup.find("input",{"class":"string email optional"})
+#how i will know that this code is work
+print(user)
+
+piscine = soup.find()
+price = soup.find(id="corePrice_desktop")
+
+# button = driver.find_element_by_tag_name("Sign in")
+time.sleep(2)
+button.click()
+time.sleep(2)
+soup2 = BeautifulSoup(page.content,'html.parser')
+if soup2.text != soup.text:
+    print(soup2.text)
 #print(soup.prettify())
 
 # function to check if the price has dropped below 20,000
