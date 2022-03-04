@@ -8,12 +8,24 @@ import time
 # chrome_options.add_argument('--disable-dev-shm-usage')
 # set the headers and user string
 
+user = "yassine1337idrissi@gmail.com"
+password = "Yassin@0661535096"
+
 driver = webdriver.Chrome('/Users/yassine/Documents/boot/chromedriver')
 driver.get("https://candidature.1337.ma/piscines")
 print(driver.title)
 
-search = driver.find_element_by_name("user[email]")
-print(search)
+username = driver.find_element_by_name("user[email]")
+username.send_keys(user)
+# print(username)
+
+userpassword = driver.find_element_by_name("user[password]")
+userpassword.send_keys(password)
+# print(username)
+
+button = driver.find_element_by_value("Sign in")
+button.click()
+time.sleep(2)
 
 driver.quit()
 
@@ -22,44 +34,41 @@ URL = 'https://candidature.1337.ma/piscines'
 # send a request to fetch HTML of the page
 # create the soup object
 # change the encoding to utf-8
-# soup.encode('utf-8')
+# # soup.encode('utf-8')
+# username_login = driver.find_element_by_id("string email optional")
+# password_login = driver.find_element_by_class_name("password optional")
+# # username_login.send_keys(user)
+# # time.sleep(1)
+# # password_login.send_keys(password)
+# user = soup.find("input",{"class":"string email optional"})
+# #how i will know that this code is work
+# print(user)
 
-user = "yassine1337idrissi@gmail.com"
-password = "Yassin@0661535096"
-username_login = driver.find_element_by_id("string email optional")
-password_login = driver.find_element_by_class_name("password optional")
-# username_login.send_keys(user)
-# time.sleep(1)
-# password_login.send_keys(password)
-user = soup.find("input",{"class":"string email optional"})
-#how i will know that this code is work
-print(user)
+# piscine = soup.find()
+# price = soup.find(id="corePrice_desktop")
 
-piscine = soup.find()
-price = soup.find(id="corePrice_desktop")
+# # button = driver.find_element_by_tag_name("Sign in")
+# time.sleep(2)
+# button.click()
+# time.sleep(2)
+# soup2 = BeautifulSoup(page.content,'html.parser')
+# if soup2.text != soup.text:
+#     print(soup2.text)
+# #print(soup.prettify())
 
-# button = driver.find_element_by_tag_name("Sign in")
-time.sleep(2)
-button.click()
-time.sleep(2)
-soup2 = BeautifulSoup(page.content,'html.parser')
-if soup2.text != soup.text:
-    print(soup2.text)
-#print(soup.prettify())
+# # function to check if the price has dropped below 20,000
+# # def check_price():
+#   #print(price)
 
-# function to check if the price has dropped below 20,000
-# def check_price():
-  #print(price)
+#   #converting the string amount to float
+# #   converted_price = float(price[0:5])
+# #   print(converted_price)
+# #   if(converted_price < 20000):
+# #     send_mail()
 
-  #converting the string amount to float
-#   converted_price = float(price[0:5])
-#   print(converted_price)
-#   if(converted_price < 20000):
-#     send_mail()
-
-  #using strip to remove extra spaces in the title
-print(price)
-print(title)
+#   #using strip to remove extra spaces in the title
+# print(price)
+# print(title)
 
 
 
