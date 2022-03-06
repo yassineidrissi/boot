@@ -8,8 +8,8 @@ import time
 # chrome_options.add_argument('--disable-dev-shm-usage')
 # set the headers and user string
 
-user = "yassine1337idrissi@gmail.com"
-password = "Yassin@0661535096"
+user = "<put_your_email>"
+password = "<put_your_passworf>"
 
 driver = webdriver.Chrome('/Users/yassine/Documents/boot/chromedriver')
 driver.get("https://candidature.1337.ma/piscines")
@@ -26,11 +26,34 @@ userpassword.send_keys(password)
 button = driver.find_element_by_value("Sign in")
 button.click()
 time.sleep(2)
+# print(soup2)
+# driver.find_element_by_class_name("recaptcha-checkbox-borderAnimation").click()
+# *tihs 👆🏻 is for click on non-human touch device
+
+if soup != soup2:
+    print("I m insade the web site")
+while True:
+    soup3 = BeautifulSoup(page2.content, "html.parser")
+    if soup3 != soup2:
+        print("there is a new piscine")
+    else:
+        print("there is no piscine")
+    time.sleep(10)
+
+# driver.close()
+
+
+# headers = {
+# "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.109 Safari/537.36"
+# }
+# # page = requests.get(URL, headers=headers)
+# # time.sleep(5)
+
 
 driver.quit()
 
-URL = 'https://candidature.1337.ma/piscines'
-#!stop here
+# URL = 'https://candidature.1337.ma/piscines'
+#! the code stop here 🙏
 # send a request to fetch HTML of the page
 # create the soup object
 # change the encoding to utf-8
