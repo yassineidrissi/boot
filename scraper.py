@@ -11,9 +11,12 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
-# from twilio.rest import Client
+from twilio.rest import Client
 
 URL = 'https://candidature.1337.ma/piscines'
+ana = '+212682392135'
+ayoub = '+212615252254'
+khalid = '+212655456084'
 
 
 def telegram_bot_sendtext(bot_message):
@@ -23,6 +26,20 @@ def telegram_bot_sendtext(bot_message):
         '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
     response = requests.get(send_text)
     return response.json()
+
+def telegram_bot_sms(sms_message, number):
+    account_sid = "ACa726c89d9f2621fd952c46fd3cad2354" 
+    auth_token = "fdb8f89f298cf1d60b27527134064510"
+    client = Client(account_sid, auth_token)
+
+    message = client.messages \
+    .create(
+         body= sms_message,
+         from_='+19808907222',
+         to= number
+     )
+
+    print(message.sid)
 
 def telegram_bot_call():
     account_sid = "ACa726c89d9f2621fd952c46fd3cad2354"
@@ -54,7 +71,7 @@ def telegram_bot_call_k():
     client = Client(account_sid, auth_token)
     call = client.calls.create(
                         twiml='<Response><Say voice="rah kayn piscine db. srbi asahbi!</Say><Play>http://demo.twilio.com/docs/classic.mp3</Play></Response>',
-                        to='+212',
+                        to='+212655456084',
                         from_='+19808907222'
                      )
 
@@ -99,6 +116,9 @@ while True:
     soup3 = BeautifulSoup(page2.content, "html.parser")
     if soup3 != soup2:
         print("there is a new piscine")
+        telegram_bot_sms("🚨kayn piscine-pooooooooool🚨 🔗ha lien: https://candidature.1337.ma/piscines🔗 🏃‍♂️ serbi chdo 🏃‍♂️", ayoub)
+        telegram_bot_sms("🚨kayn piscine-pooooooooool🚨 🔗ha lien: https://candidature.1337.ma/piscines🔗 🏃‍♂️ serbi chdo 🏃‍♂️", khalid)
+        telegram_bot_sms("🚨kayn piscine-pooooooooool🚨 🔗ha lien: https://candidature.1337.ma/piscines🔗 🏃‍♂️ serbi chdo 🏃‍♂️", ana)
         telegram_bot_sendtext("🚨kayn piscine-pooooooooool🚨")
         telegram_bot_sendtext("🔗ha lien: https://candidature.1337.ma/piscines🔗")
         telegram_bot_sendtext("🏃‍♂️ serbi chdo 🏃‍♂️")
@@ -110,10 +130,10 @@ while True:
         exit()
     else:
         x +=1
-        print ("i try ",x,"times but no pool😥")
+        print ("i try ",x,"times but no pool😥")        
         # exit()
             # telegram_bot_sendtext("🙏 sorry, just a test🙏")
-    time.sleep(3)
+    time.sleep(5)
 
 # driver.close()
 #! the code stop here 🙏
