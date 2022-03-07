@@ -16,7 +16,7 @@ URL = 'https://candidature.1337.ma/piscines'
 
 def telegram_bot_sendtext(bot_message):
     bot_token = "5133253099:AAG-g5TgU-zZtKP8HEUaLqWXkMRcz8Slm6I"
-    bot_chatID = '-783359041'
+    bot_chatID = '-1001536466676'
     send_text = 'https://api.telegram.org/bot' + bot_token + \
         '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
     response = requests.get(send_text)
@@ -57,14 +57,16 @@ soup2 = BeautifulSoup(page2.content, "html.parser")
 if soup != soup2:
     print("I m insade the web site")
 while True:
-    # soup3 = BeautifulSoup(page2.content, "html.parser")
+    driver.refresh()
+    page3 = requests.get(url2 , headers=headers)
+    soup3 = BeautifulSoup(page2.content, "html.parser")
     if soup3 != soup2:
         print("there is a new piscine")
-        telegram_bot_sendtext("💩makayn db ta piscine😴")
+        telegram_bot_sendtext("kayn piscine")
     else:
         print("there is no piscine")
-        telegram_bot_sendtext("💩makayn db ta piscine😴")
-    time.sleep(10)
+        # telegram_bot_sendtext("🙏 sorry, just a test🙏")
+    time.sleep(3)
 
 # driver.close()
 #! the code stop here 🙏
