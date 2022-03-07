@@ -1,4 +1,5 @@
 
+from re import X
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
@@ -10,7 +11,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
-from twilio.rest import Client
+# from twilio.rest import Client
 
 URL = 'https://candidature.1337.ma/piscines'
 
@@ -89,6 +90,7 @@ soup2 = BeautifulSoup(page2.content, "html.parser")
 # driver.find_element_by_class_name("recaptcha-checkbox-borderAnimation").click()
 # *tihs 👆🏻 is for click on non-human touch device
 
+x = 0
 if soup != soup2:
     print("I m insade the web site")
 while True:
@@ -97,18 +99,19 @@ while True:
     soup3 = BeautifulSoup(page2.content, "html.parser")
     if soup3 != soup2:
         print("there is a new piscine")
+        telegram_bot_sendtext("🚨kayn piscine-pooooooooool🚨")
+        telegram_bot_sendtext("🔗ha lien: https://candidature.1337.ma/piscines🔗")
+        telegram_bot_sendtext("🏃‍♂️ serbi chdo 🏃‍♂️")
         telegram_bot_call()
         time.sleep(20)
         telegram_bot_call_a()
         time.sleep(20)
         telegram_bot_call_k()
-        telegram_bot_sendtext("🚨kayn piscine-pooooooooool🚨")
-        telegram_bot_sendtext("🔗ha lien: https://candidature.1337.ma/piscines🔗")
-        telegram_bot_sendtext("🏃‍♂️ serbi chdo🏃‍♂️ ")
-        exit
+        exit()
     else:
-        print("there is no piscine")
-        
+        x +=1
+        print ("i try ",x,"times but no pool😥")
+        # exit()
             # telegram_bot_sendtext("🙏 sorry, just a test🙏")
     time.sleep(3)
 
