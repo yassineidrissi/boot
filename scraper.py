@@ -10,6 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
+from twilio.rest import Client
 
 URL = 'https://candidature.1337.ma/piscines'
 
@@ -21,6 +22,40 @@ def telegram_bot_sendtext(bot_message):
         '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
     response = requests.get(send_text)
     return response.json()
+
+def telegram_bot_call():
+    account_sid = "ACa726c89d9f2621fd952c46fd3cad2354"
+    auth_token = "fdb8f89f298cf1d60b27527134064510"
+    client = Client(account_sid, auth_token)
+    call = client.calls.create(
+                        twiml='<Response><Say voice="rah kayn piscine db. srbi asahbi!</Say><Play>http://demo.twilio.com/docs/classic.mp3</Play></Response>',
+                        to='+212682392135',
+                        from_='+19808907222'
+                     )
+
+    print(call.sid)
+
+def telegram_bot_call_a():
+    account_sid = "ACa726c89d9f2621fd952c46fd3cad2354"
+    auth_token = "fdb8f89f298cf1d60b27527134064510"
+    client = Client(account_sid, auth_token)
+    call = client.calls.create(
+                        twiml='<Response><Say voice="rah kayn piscine db. srbi asahbi!</Say><Play>http://demo.twilio.com/docs/classic.mp3</Play></Response>',
+                        to='+212615252254',
+                        from_='+19808907222'
+                     )
+
+    print(call.sid)
+
+def telegram_bot_call_k():
+    account_sid = "ACa726c89d9f2621fd952c46fd3cad2354"
+    auth_token = "fdb8f89f298cf1d60b27527134064510"
+    client = Client(account_sid, auth_token)
+    call = client.calls.create(
+                        twiml='<Response><Say voice="rah kayn piscine db. srbi asahbi!</Say><Play>http://demo.twilio.com/docs/classic.mp3</Play></Response>',
+                        to='+212',
+                        from_='+19808907222'
+                     )
 
 chrome_options = Options()
 options = webdriver.ChromeOptions()
@@ -62,10 +97,19 @@ while True:
     soup3 = BeautifulSoup(page2.content, "html.parser")
     if soup3 != soup2:
         print("there is a new piscine")
-        telegram_bot_sendtext("kayn piscine")
+        telegram_bot_call()
+        time.sleep(20)
+        telegram_bot_call_a()
+        time.sleep(20)
+        telegram_bot_call_k()
+        telegram_bot_sendtext("🚨kayn piscine-pooooooooool🚨")
+        telegram_bot_sendtext("🔗ha lien: https://candidature.1337.ma/piscines🔗")
+        telegram_bot_sendtext("🏃‍♂️ serbi chdo🏃‍♂️ ")
+        exit
     else:
         print("there is no piscine")
-        # telegram_bot_sendtext("🙏 sorry, just a test🙏")
+        
+            # telegram_bot_sendtext("🙏 sorry, just a test🙏")
     time.sleep(3)
 
 # driver.close()
