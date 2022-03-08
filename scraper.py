@@ -133,7 +133,7 @@ while True:
         print ("i try ",x,"times but no pool😥")        
         # exit()
             # telegram_bot_sendtext("🙏 sorry, just a test🙏")
-    time.sleep(5)
+    time.sleep(30)
 
 # driver.close()
 #! the code stop here 🙏
