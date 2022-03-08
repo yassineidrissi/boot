@@ -121,6 +121,7 @@ soup2 = BeautifulSoup(page2.content, "html.parser")
 x = 0
 y = 0
 if soup != soup2:
+    telegram_bot_sendtext_t("🚀l boot d bsah rah 9l3🚀")
     print("I m insade the web site")
 while True:
     driver.refresh()
@@ -145,7 +146,7 @@ while True:
         y +=1
         if x > 15:
             print ("i try ",y,"times but no pool😥")
-            telegram_bot_sendtext_t("😋gha thna rah mzl khdam 😉")
+            telegram_bot_sendtext_t("😋gha thna rah mzl matla7 pool😉")
             x = 0      
         # exit()
             # telegram_bot_sendtext("🙏 sorry, just a test🙏")
