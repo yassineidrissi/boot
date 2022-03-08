@@ -1,5 +1,6 @@
 
 from re import X
+from tkinter import Y
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
@@ -27,6 +28,14 @@ def telegram_bot_sendtext(bot_message):
     response = requests.get(send_text)
     return response.json()
 
+def telegram_bot_sendtext_t(bot_message):
+    bot_token = "5208425825:AAFYqnvNJkfVkQ1-45twV2qJ8alQj_BL0rU"
+    bot_chatID = '-1001623813461'
+    send_text = 'https://api.telegram.org/bot' + bot_token + \
+        '/sendMessage?chat_id=' + bot_chatID + '&parse_mode=Markdown&text=' + bot_message
+    response = requests.get(send_text)
+    return response.json()
+
 def telegram_bot_sms(sms_message, number):
     account_sid = "ACa726c89d9f2621fd952c46fd3cad2354" 
     auth_token = "fdb8f89f298cf1d60b27527134064510"
@@ -40,6 +49,8 @@ def telegram_bot_sms(sms_message, number):
      )
 
     print(message.sid)
+
+
 
 def telegram_bot_call():
     account_sid = "ACa726c89d9f2621fd952c46fd3cad2354"
@@ -108,6 +119,7 @@ soup2 = BeautifulSoup(page2.content, "html.parser")
 # *tihs 👆🏻 is for click on non-human touch device
 
 x = 0
+y = 0
 if soup != soup2:
     print("I m insade the web site")
 while True:
@@ -130,10 +142,14 @@ while True:
         exit()
     else:
         x +=1
-        print ("i try ",x,"times but no pool😥")        
+        y +=1
+        if x > 15:
+            print ("i try ",y,"times but no pool😥")
+            telegram_bot_sendtext_t("😋gha thna rah mzl khdam 😉")
+            x = 0      
         # exit()
             # telegram_bot_sendtext("🙏 sorry, just a test🙏")
-    time.sleep(30)
+    time.sleep(20)
 
 # driver.close()
 #! the code stop here 🙏
