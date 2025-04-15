@@ -1,0 +1,4 @@
+chromedriver
+.venv
+.env
+.vscode

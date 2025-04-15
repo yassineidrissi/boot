@@ -1,29 +1,37 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.options import Options
 import time
 
-# chrome_options = Options()
-# chrome_options.add_argument('--headless')
-# chrome_options.add_argument('--no-sandbox')
-# chrome_options.add_argument('--disable-dev-shm-usage')
-# set the headers and user string
+# Create chrome options and specify the binary location if necessary.
+chrome_options = Options()
+# Uncomment and update the path if Chrome is not in its default location
+chrome_options.binary_location = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
 
-user = "<put_your_email>"
-password = "<put_your_passworf>"
+# Optionally, disable headless mode for easier debugging:
+# chrome_options.add_argument('--headless')  # You can comment this out during debugging
 
-driver = webdriver.Chrome('/Users/yassine/Documents/boot/chromedriver')
-driver.get("https://candidature.1337.ma/piscines")
+# Use the Service object to specify the location of your Chromedriver.s
+
+# Specify the path to your Chromedriver executable via the Service object
+service = Service('/Users/yassine/Documents/boot/chromedriver')
+
+# Initialize the WebDriver with the specified Service and options
+driver = webdriver.Chrome(service=service, options=chrome_options)
+
+driver.get("https://admission.1337.ma/en/users/sign_in")
 print(driver.title)
 
-username = driver.find_element_by_name("user[email]")
+user = "yassine42idrissi@gmail.com"
+password = "code"
+
+username = driver.find_element("name", "email")
 username.send_keys(user)
-# print(username)
 
-userpassword = driver.find_element_by_name("user[password]")
+userpassword = driver.find_element("name", "password")
 userpassword.send_keys(password)
-# print(username)
 
-button = driver.find_element_by_value("Sign in")
+button = driver.find_element("value", "Sign in")
 button.click()
 time.sleep(2)
 # print(soup2)
