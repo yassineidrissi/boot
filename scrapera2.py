@@ -1,7 +1,17 @@
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
+import undetected_chromedriver as uc
 import time
+
+
+import undetected_chromedriver as uc
+
+options = uc.ChromeOptions()
+# options.add_argument('--headless')  # Don't use headless for login-sensitive sites
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-blink-features=AutomationControlled')
 
 # Create chrome options and specify the binary location if necessary.
 chrome_options = Options()
@@ -21,9 +31,9 @@ driver = webdriver.Chrome(service=service, options=chrome_options)
 
 driver.get("https://admission.1337.ma/en/users/sign_in")
 print(driver.title)
-
-user = "yassine42idrissi@gmail.com"
-password = "code"
+time.sleep(2)
+user = "atmanidrissi99@gmail.com"
+password = "RAJA1949idrissi@"
 
 username = driver.find_element("name", "email")
 username.send_keys(user)
@@ -31,8 +41,11 @@ username.send_keys(user)
 userpassword = driver.find_element("name", "password")
 userpassword.send_keys(password)
 
-button = driver.find_element("value", "Sign in")
+# button = driver.find_element("type", "submit")
+button = driver.find_element(By.CSS_SELECTOR, 'button[type="submit"]')
+time.sleep(20000)  # Better to keep this short or use WebDriverWait instead
 button.click()
+
 time.sleep(2)
 # print(soup2)
 # driver.find_element_by_class_name("recaptcha-checkbox-borderAnimation").click()

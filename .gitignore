@@ -2,3 +2,4 @@ chromedriver
 .venv
 .env
 .vscode
+config.py
